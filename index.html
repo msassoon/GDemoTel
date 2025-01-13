@@ -50,6 +50,29 @@
     				   }
   		   }
 	});
+
+	    // Check if the user is accessing the page on a mobile device
+	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+	if (isMobile) {
+	  // User is accessing the page on a mobile device
+	  console.log("Mobile device detected");
+		     Genesys("command", "Database.set", {
+  	messaging: {
+    		customAttributes: {
+      				   device_type: "mobile" }
+  		   }
+	});
+	} else {
+	  // User is accessing the page on a desktop device
+	  console.log("Desktop device detected");
+				     Genesys("command", "Database.set", {
+  	messaging: {
+    		customAttributes: {
+      				   device_type: "mobile" }
+  		   }
+	});
+	};
 	
 	Genesys("subscribe", "Messenger.opened", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenger opened'});});
    	Genesys("subscribe", "Conversations.started", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenger Conversation started'});});
