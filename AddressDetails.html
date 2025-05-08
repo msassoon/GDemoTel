@@ -82,32 +82,6 @@
 	Genesys("subscribe", "Journey.qualifiedWebMessagingOffer", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenging Offered'});});
     	Genesys("subscribe", "Journey.qualifiedContentOffer", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Content Offer Offered'});});
 
-	    Genesys("subscribe", "Toaster.ready", function() {
-  Genesys("command","Toaster.open",
-    {
-      title: "Welcome to GDemoTel",
-      body: "Services to boost you into the future. To get help, click below",
-      buttons: {
-        type: "binary", // required when 'buttons' is present. Values: "unary" for one action button, "binary" for two action buttons
-        primary: "Get Help", // optional, default value is "Accept"
-        secondary: "Maybe Later", // optional, default value is "Decline"
-      },
-    },
-    function () {
-      /*fulfilled callback*/
-      console.log("Toaster is opened");
-    },
-    function (error) {
-      /*rejected callback*/
-      console.log("There was an error running the Toaster.open command:", error);
-    });
-		});
-		
-Genesys("subscribe","Toaster.accepted", function (e) {
-	console.log("Toaster was accepted", e);
-	Genesys("command", "Messenger.open");
-	gtag('event','Engage',{'event_category':'Toaster','event_label': 'Toaster Accepted'});
-  });
     </script>
 
 	
