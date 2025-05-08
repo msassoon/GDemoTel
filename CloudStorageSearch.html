@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="//www.w3.org/1999/html" xmlns="//www.w3.org/1999/html">
+	
+<head>
+    <title>GDemoTel Address Details</title>
+	<link rel="icon" href="logo.ico" type="image/x-icon" />
+	<!-- <link rel="shortcut icon" href="favicon.ico"/> -->
+	<input type="hidden" id="email" name="email" value="marc.sassoon@genesys.com">
+	<input type="hidden" id="firstname" name="firstname" value="Marc">
+	<input type="hidden" id="lastname" name="lastname" value="Sassoon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Set URL parms -->
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1EEJ02RY58"></script>
+
+	
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1EEJ02RY58');
+  console.log('GA tag loaded');
+	 
+</script>
+	
+
+	
+    <script>
+  (function (g, e, n, es, ys) {
+    g['_genesysJs'] = e;
+    g[e] = g[e] || function () {
+      (g[e].q = g[e].q || []).push(arguments)
+    };
+    g[e].t = 1 * new Date();
+    g[e].c = es;
+    ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+  })(window, 'Genesys', 'https://apps.mypurecloud.de/genesys-bootstrap/genesys.min.js', {
+    environment: 'euc1',
+    deploymentId: '271a15a4-c58d-4217-915f-0de40548bb8c'
+  });
+	  
+     Genesys("command", "Database.set", {
+  	messaging: {
+    		customAttributes: {
+      				   department: "new orders",
+      				   ref_number: "86429835673",
+      				   order_status: "submitted",
+                       browser_language: navigator.language
+    				   }
+  		   }
+	});
+
+	    // Check if the user is accessing the page on a mobile device
+	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+	if (isMobile) {
+	  // User is accessing the page on a mobile device
+	  console.log("Mobile device detected");
+		     Genesys("command", "Database.set", {
+  	messaging: {
+    		customAttributes: {
+      				   device_type: "mobile" }
+  		   }
+	});
+	} else {
+	  // User is accessing the page on a desktop device
+	  console.log("Desktop device detected");
+				     Genesys("command", "Database.set", {
+  	messaging: {
+    		customAttributes: {
+      				   device_type: "mobile" }
+  		   }
+	});
+	};
+	
+	Genesys("subscribe", "Messenger.opened", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenger opened'});});
+   	Genesys("subscribe", "Conversations.started", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenger Conversation started'});});
+	Genesys("subscribe", "Messenger.closed", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenger Closed'});});
+	Genesys("subscribe", "Conversations.closed", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenger Conversation closed'});}); 
+	Genesys("subscribe", "Journey.qualifiedWebMessagingOffer", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenging Offered'});});
+    	Genesys("subscribe", "Journey.qualifiedContentOffer", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Content Offer Offered'});});
+
+	    Genesys("subscribe", "Toaster.ready", function() {
+  Genesys("command","Toaster.open",
+    {
+      title: "Welcome to GDemoTel",
+      body: "Services to boost you into the future. To get help, click below",
+      buttons: {
+        type: "binary", // required when 'buttons' is present. Values: "unary" for one action button, "binary" for two action buttons
+        primary: "Get Help", // optional, default value is "Accept"
+        secondary: "Maybe Later", // optional, default value is "Decline"
+      },
+    },
+    function () {
+      /*fulfilled callback*/
+      console.log("Toaster is opened");
+    },
+    function (error) {
+      /*rejected callback*/
+      console.log("There was an error running the Toaster.open command:", error);
+    });
+		});
+		
+Genesys("subscribe","Toaster.accepted", function (e) {
+	console.log("Toaster was accepted", e);
+	Genesys("command", "Messenger.open");
+	gtag('event','Engage',{'event_category':'Toaster','event_label': 'Toaster Accepted'});
+  });
+    </script>
+
+	
+<style>
+.button {
+top:450px;right:-15px;position:fixed;z-index:99999;padding:10px;color:#000000;border:1px solid #000000;transform: rotate(-90deg);height:43.5px;font-weight:700;
+}
+
+.chat-button {background-color: #ffffff!;}
+</style>
+	
+</head>
+
+<body>
+
+<img src="images/CloudStorageSearch.png" alt="Home" usemap="#workmap" width=100% height=100%>
+<map name="workmap">
+  <area shape="rect" coords="288,74,638,123" alt="Store" href="store.html">
+  <area shape="rect" coords="1255,465,1534,665" alt="Shop Now" href="store.html">
+  <area shape="rect" coords="1233,77,1497,215" alt="Contact Us" href="contact.html">
+</map>
+
+</body>
+</html>
