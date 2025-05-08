@@ -82,32 +82,6 @@
 	Genesys("subscribe", "Journey.qualifiedWebMessagingOffer", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Messenging Offered'});});
     	Genesys("subscribe", "Journey.qualifiedContentOffer", function() {gtag('event','Engage',{'event_category':'GPEWM','event_label': 'Content Offer Offered'});});
 
-	    Genesys("subscribe", "Toaster.ready", function() {
-  Genesys("command","Toaster.open",
-    {
-      title: "Welcome to GDemoTel",
-      body: "Services to boost you into the future. To get help, click below",
-      buttons: {
-        type: "binary", // required when 'buttons' is present. Values: "unary" for one action button, "binary" for two action buttons
-        primary: "Get Help", // optional, default value is "Accept"
-        secondary: "Maybe Later", // optional, default value is "Decline"
-      },
-    },
-    function () {
-      /*fulfilled callback*/
-      console.log("Toaster is opened");
-    },
-    function (error) {
-      /*rejected callback*/
-      console.log("There was an error running the Toaster.open command:", error);
-    });
-		});
-		
-Genesys("subscribe","Toaster.accepted", function (e) {
-	console.log("Toaster was accepted", e);
-	Genesys("command", "Messenger.open");
-	gtag('event','Engage',{'event_category':'Toaster','event_label': 'Toaster Accepted'});
-  });
     </script>
 
 	
@@ -125,9 +99,10 @@ top:450px;right:-15px;position:fixed;z-index:99999;padding:10px;color:#000000;bo
 
 <img src="images/FamilySuperConnectDetails.png" alt="Home" usemap="#workmap" width=100% height=100%>
 <map name="workmap">
-  <area shape="rect" coords="288,74,638,123" alt="Store" href="store.html">
-  <area shape="rect" coords="1255,465,1534,665" alt="Shop Now" href="store.html">
-  <area shape="rect" coords="1233,77,1497,215" alt="Contact Us" href="contact.html">
+  <area shape="rect" coords="834,780-,1000,845" alt="Shop Now" href="AddressDetails.html">	
+  <area shape="rect" coords="1016,180,1127,303" alt="Shop Now" href="Store.html">
+  <area shape="rect" coords="1370,180,1570,303" alt="Contact Us" href="ContactUs.html">
+  <area shape="rect" coords="790,180,900,303" alt="Contact Us" href="index.html">
 </map>
 
 </body>
